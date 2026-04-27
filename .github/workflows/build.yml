@@ -1,0 +1,21 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build APK
+      uses: digreatbiscuit/kivy-buildozer-action@v2
+      with:
+        spec: buildozer.spec
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: PhyCalc-APK
+        path: bin/*.apk
