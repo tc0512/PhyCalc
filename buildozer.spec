@@ -110,7 +110,7 @@ android.minapi = 21
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 23b
+#android.ndk = 23b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -450,3 +450,6 @@ warn_on_root = 1
 #    Then, invoke the command line with the "demo" profile:
 #
 #buildozer --profile demo android debug
+android.sdk_url = https://mirrors.tuna.tsinghua.edu.cn/android/repository
+android.ndk_url = https://mirrors.tuna.tsinghua.edu.cn/android/ndk
+github.download_url = https://ghproxy.net/
