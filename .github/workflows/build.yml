@@ -1,18 +1,17 @@
 name: Build APK
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Clone repository
+        run: |
+          git clone https://github.com/tc0512/PhyCalc.git /tmp/PhyCalc
+          cd /tmp/PhyCalc
+          ls -la
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -29,13 +28,16 @@ jobs:
       - name: Install buildozer
         run: |
           pip install buildozer cython
+          cd /tmp/PhyCalc
           buildozer init
 
       - name: Build APK
-        run: buildozer android debug
+        run: |
+          cd /tmp/PhyCalc
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PhyCalc-APK
-          path: bin/*.apk
+          path: /tmp/PhyCalc/bin/*.apk
