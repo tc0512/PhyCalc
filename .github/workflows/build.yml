@@ -28,9 +28,6 @@ jobs:
       - name: Install buildozer & cython
         run: pip install buildozer cython
 
-      - name: Initialize buildozer (creates .buildozer)
-        run: buildozer init
-
       - name: Accept Android SDK licenses
         run: |
           yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
