@@ -25,9 +25,14 @@ jobs:
             autoconf libtool pkg-config zlib1g-dev libncurses5-dev \
             libncursesw5-dev cmake libffi-dev libssl-dev
 
-      - name: Install buildozer
+      - name: Install buildozer & cython
+        run: pip install buildozer cython
+
+      - name: Accept Android SDK licenses
         run: |
-          pip install buildozer cython
+          mkdir -p ~/.android
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" > ~/.android/repositories.cfg
+          yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Build APK
         run: buildozer android debug
