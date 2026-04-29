@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import math
+from pathlib import Path
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.core.text import LabelBase
@@ -7,8 +8,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
-
-LabelBase.register(name='Chinese', fn_regular='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')
+font_path = str(Path(__file__).parent / "fonts" / "NotoSansCJK-Regular.ttc")
+LabelBase.register(name='Chinese', fn_regular=font_path)
 
 class MyApp(App):
     def build(self):
