@@ -28,16 +28,12 @@ jobs:
       - name: Install buildozer & cython
         run: pip install buildozer cython
 
-      - name: Accept all Android SDK licenses
-        run: |
-          # 创建 licenses 目录
-          mkdir -p ~/.android
-          touch ~/.android/repositories.cfg
+      - name: Run buildozer init (creates .buildozer)
+        run: buildozer init
 
-          # 自动接受所有许可证
-          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-        env:
-          ANDROID_HOME: /usr/local/lib/android/sdk
+      - name: Accept Android SDK licenses (using Buildozer's own SDK)
+        run: |
+          yes | ~/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --licenses
 
       - name: Build APK
         run: buildozer android debug
