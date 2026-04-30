@@ -10,16 +10,15 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 1
+      - name: Clone repository manually
+        run: |
+          git clone https://github.com/tc0512/PhyCalc.git /tmp/PhyCalc
+          cd /tmp/PhyCalc
 
       - name: Build APK with Docker
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/app \
+            -v /tmp/PhyCalc:/app \
             -w /app \
             kivy/buildozer:latest \
             bash -c "yes | buildozer android debug"
@@ -28,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PhyCalc-APK
-          path: bin/*.apk
+          path: /tmp/PhyCalc/bin/*.apk
