@@ -15,7 +15,7 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}:/app \
             -w /app \
-            kivy/buildozer:latest \
+            kivy/buildozer:1.0.0 \
             bash -c "echo y | buildozer android debug"
 
       - name: Upload APK
