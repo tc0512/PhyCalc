@@ -8,11 +8,14 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
+from kivy.core.window import Window
 font_path = str(Path(__file__).parent / "fonts" / "NotoSansCJK-Regular.ttc")
 LabelBase.register(name='Chinese', fn_regular=font_path)
 
 class MyApp(App):
+    icon = "logo.png"
     def build(self):
+        self.title = "PhyCalc"
         layout = BoxLayout(orientation='vertical', spacing=10, padding=20)
         btn1 = Button(text='物理计算', font_name='Chinese')
         btn2 = Button(text='单位换算', font_name='Chinese')
