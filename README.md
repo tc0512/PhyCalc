@@ -1,6 +1,47 @@
 # PhyCalc
 python编写的简单物理计算器
 
+## 下载
+### Windows
+```cmd
+#依赖，视情况下载
+pip install kivy
+winget install Git.Git
+git clone https://github.com/tc0512/PhyCalc.git
+#运行
+python PhyCalc/PhyCalc.py
+```
+### Linux
+```bash
+pip install kivy
+apt install git
+git clone https://github.com/tc0512/PhyCalc.git
+echo "alias PhyCalc='./PhyCalc/PhyCalc.py'" >> .bashrc
+source ~/.bashrc
+#运行
+PhyCalc
+```
+### MacOs
+```zsh
+pip install kivy
+brew install git
+git clone https://github.com/tc0512/PhyCalc.git
+echo "alias PhyCalc='python PhyCalc/PhyCalc.py'" >> .zshrc
+source ~/.zshrc
+PhyCalc
+```
+### Android(Termux)
+```bash
+pkg install x11-repo
+pkg install opengl sdl2
+pip install kivy
+pkg install git
+git clone https://github.com/tc0512/PhyCalc.git
+echo "alias PhyCalc='./PhyCalc/PhyCalc.py'" >> .bashrc
+source ~/.bashrc
+PhyCalc
+```
+
 ## 核心功能
 ### 物理计算
 - 支持简单数学表达式
