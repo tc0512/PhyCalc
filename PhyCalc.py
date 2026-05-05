@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+print(r""" ____  _    ___  _ ____  ____  _     ____
+/  __\/ \ /|\  \///   _\/  _ \/ \   /   _\
+|  \/|| |_|| \  / |  /  | / \|| |   |  /
+|  __/| | || / /  |  \__| |-||| |_/\|  \_
+\_/   \_/ \|/_/   \____/\_/ \|\____/\____/ v0.1.0""")
 import math
 from pathlib import Path
 from kivy.app import App
@@ -11,7 +16,6 @@ from kivy.uix.label import Label
 from kivy.core.window import Window
 font_path = str(Path(__file__).parent / "fonts" / "NotoSansCJK-Regular.ttc")
 LabelBase.register(name='Chinese', fn_regular=font_path)
-
 class MyApp(App):
     icon = "logo.png"
     def build(self):
