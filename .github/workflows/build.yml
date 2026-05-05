@@ -39,12 +39,18 @@ jobs:
         if [ ! -f buildozer.spec ]; then
           buildozer init
         fi
+        # 设置自动接受许可证
         sed -i 's/^#\?android.accept_sdk_license =.*/android.accept_sdk_license = True/' buildozer.spec
         sed -i 's/^#\?android.ndk =.*/android.ndk = 23b/' buildozer.spec
         sed -i 's/^#\?android.sdk =.*/android.sdk = 24/' buildozer.spec
+        sed -i 's/^#\?android.minapi =.*/android.minapi = 21/' buildozer.spec
+        sed -i 's/^#\?android.targetapi =.*/android.targetapi = 34/' buildozer.spec
 
     - name: Build APK
-      run: buildozer android debug
+      run: |
+        # 在构建前自动接受所有许可证
+        yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+        buildozer android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
