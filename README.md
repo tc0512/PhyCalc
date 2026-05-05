@@ -6,8 +6,6 @@ python编写的简单物理计算器
 ```cmd
 #依赖，视情况下载
 pip install kivy
-winget install Git.Git
-git clone https://github.com/tc0512/PhyCalc.git
 #运行
 python PhyCalc/PhyCalc.py
 ```
@@ -33,7 +31,10 @@ PhyCalc
 ### Android(Termux)
 ```bash
 pkg install x11-repo
-pkg install opengl sdl2
+pkg install libpng libjpeg-turbo libfreetype libglvnd sdl2 sdl2-image sdl2-mixer sdl2-ttf
+export USE_SDL2=1
+export USE_GLEW=1
+pip install cython
 pip install kivy
 pkg install git
 git clone https://github.com/tc0512/PhyCalc.git
