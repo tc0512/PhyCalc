@@ -3,42 +3,53 @@ python编写的简单物理计算器
 
 ## 下载
 ### Windows
-```cmd
+```powershell
+cd ~
 #依赖，视情况下载
 pip install kivy
+curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip #约14.83MB
+Expand-Archive -Path v0.1.0.zip -DestinationPath v0.1.0
+Add-Content $PROFILE "Set-Alias PhyCalc python $HOME\PhyCalc\PhyCalc.py"
+. $PROFILE
 #运行
-python PhyCalc/PhyCalc.py
+PhyCalc
 ```
 ### Linux
 ```bash
+cd ~
 pip install kivy
-apt install git
-git clone https://github.com/tc0512/PhyCalc.git
-echo "alias PhyCalc='./PhyCalc/PhyCalc.py'" >> .bashrc
+curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
+unzip v0.1.0.zip
+echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .bashrc
 source ~/.bashrc
 #运行
 PhyCalc
 ```
 ### MacOs
 ```zsh
+cd ~
 pip install kivy
 brew install git
-git clone https://github.com/tc0512/PhyCalc.git
-echo "alias PhyCalc='python PhyCalc/PhyCalc.py'" >> .zshrc
+curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
+unzip v0.1.0.zip
+echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .zshrc
 source ~/.zshrc
 PhyCalc
 ```
 ### Android(Termux)
 ```bash
+cd ~
 pkg install x11-repo
 pkg install libpng libjpeg-turbo libfreetype libglvnd sdl2 sdl2-image sdl2-mixer sdl2-ttf
+#禁用一些会出乱子的属性
 export USE_SDL2=1
 export USE_GLEW=1
 pip install cython
 pip install kivy
 pkg install git
-git clone https://github.com/tc0512/PhyCalc.git
-echo "alias PhyCalc='./PhyCalc/PhyCalc.py'" >> .bashrc
+curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
+unzip v0.1.0.zip
+echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .bashrc
 source ~/.bashrc
 PhyCalc
 ```
