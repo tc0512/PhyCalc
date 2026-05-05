@@ -3,54 +3,19 @@ name: Build Android APK
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: kivy/buildozer:latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.9'
-
-    - name: Install system dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y \
-          git zip unzip openjdk-17-jdk \
-          python3-pip autoconf libtool pkg-config \
-          zlib1g-dev libncurses5-dev libncursesw5-dev \
-          cmake libffi-dev libssl-dev
-
-    - name: Install buildozer
-      run: |
-        pip install buildozer
-        pip install cython==0.29.33
-
-    - name: Configure buildozer.spec
-      run: |
-        if [ ! -f buildozer.spec ]; then
-          buildozer init
-        fi
-        # 设置自动接受许可证
-        sed -i 's/^#\?android.accept_sdk_license =.*/android.accept_sdk_license = True/' buildozer.spec
-        sed -i 's/^#\?android.ndk =.*/android.ndk = 23b/' buildozer.spec
-        sed -i 's/^#\?android.sdk =.*/android.sdk = 24/' buildozer.spec
-        sed -i 's/^#\?android.minapi =.*/android.minapi = 21/' buildozer.spec
-        sed -i 's/^#\?android.targetapi =.*/android.targetapi = 34/' buildozer.spec
-
     - name: Build APK
-      run: |
-        # 在构建前自动接受所有许可证
-        yes | ~/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
-        buildozer android debug
+      run: buildozer android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
