@@ -15,7 +15,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build APK
-      run: buildozer android debug
+      run: |
+        # 自动回答 root 警告
+        yes | buildozer android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
