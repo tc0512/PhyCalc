@@ -1,59 +1,6 @@
 # PhyCalc
 python编写的简单物理计算器
 
-## 下载
-### Windows
-```powershell
-cd ~
-#依赖，视情况下载
-pip install kivy
-curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip #约14.83MB
-Expand-Archive -Path v0.1.0.zip -DestinationPath v0.1.0
-Add-Content $PROFILE "Set-Alias PhyCalc python $HOME\PhyCalc\PhyCalc.py"
-. $PROFILE
-#运行
-PhyCalc
-```
-### Linux
-```bash
-cd ~
-pip install kivy
-curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
-unzip v0.1.0.zip
-echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .bashrc
-source ~/.bashrc
-#运行
-PhyCalc
-```
-### MacOs
-```zsh
-cd ~
-pip install kivy
-brew install git
-curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
-unzip v0.1.0.zip
-echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .zshrc
-source ~/.zshrc
-PhyCalc
-```
-### Android(Termux)
-```bash
-cd ~
-pkg install x11-repo
-pkg install libpng libjpeg-turbo libfreetype libglvnd sdl2 sdl2-image sdl2-mixer sdl2-ttf
-#禁用一些会出乱子的属性
-export USE_SDL2=1
-export USE_GLEW=1
-pip install cython
-pip install kivy
-pkg install git
-curl -O https://github.com/tc0512/PhyCalc/archive/refs/tags/v0.1.0.zip
-unzip v0.1.0.zip
-echo "alias PhyCalc='python $HOME/PhyCalc-0.1.0/PhyCalc.py'" >> .bashrc
-source ~/.bashrc
-PhyCalc
-```
-
 ## 核心功能
 ### 物理计算
 - 支持简单数学表达式
@@ -86,4 +33,8 @@ PhyCalc
 6. 得到结果
 
 ## 注意事项
-** `物理计算`中，变量名只能包含大小写字母、下划线、数字和中文，不能以数字开头**
+1. `物理计算`中，变量名只能包含大小写字母、下划线、数字和中文，不能以数字开头
+2. `物理计算`中，用户可以使用`sqrt` `cos` `sin`等数学函数
+
+## 许可证
+MIT
