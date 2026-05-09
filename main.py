@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-print(r""" ____  _    ___  _ ____  ____  _     ____
-/  __\/ \ /|\  \///   _\/  _ \/ \   /   _\
-|  \/|| |_|| \  / |  /  | / \|| |   |  /
-|  __/| | || / /  |  \__| |-||| |_/\|  \_
-\_/   \_/ \|/_/   \____/\_/ \|\____/\____/ v0.1.0""")
 import math
 from pathlib import Path
 from kivy.app import App
