@@ -4,7 +4,7 @@ package.name = phycalc
 package.domain = org.example
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,ttc
-version = 0.1
+version = 0.2
 requirements = python3,kivy
 icon.filename = %(source.dir)s/logo.png
 
