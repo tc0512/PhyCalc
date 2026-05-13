@@ -16,8 +16,8 @@ class MyApp(App):
     def build(self):
         self.title = "PhyCalc"
         layout = BoxLayout(orientation='vertical', spacing=10, padding=20)
-        btn1 = Button(text='物理计算', font_name='Chinese')
-        btn2 = Button(text='单位换算', font_name='Chinese')
+        btn1 = Button(text='物理计算', font_name='Chinese', background_color=(1, 0.8, 0, 1))
+        btn2 = Button(text='单位换算', font_name='Chinese', background_color=(1, 1, 1, 1))
         btn1.bind(on_press=self.btn1_click)
         btn1.bind(on_release=self.btn1_release)
         btn2.bind(on_press=self.btn2_click)
