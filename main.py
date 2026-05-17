@@ -15,21 +15,29 @@ class MyApp(App):
     icon = "logo.png"
     def build(self):
         self.title = "PhyCalc"
-        layout = BoxLayout(orientation='vertical', spacing=10, padding=20)
+        main_layout = BoxLayout(orientation='vertical', spacing=20, padding=20)
+        button_layout = BoxLayout(orientation='horizontal', spacing=20, size_hint_y=None, height=560)
         btn1 = Button(text='物理计算', font_name='Chinese', background_color=(1, 0.8, 0, 1))
-        btn2 = Button(text='单位换算', font_name='Chinese', background_color=(1, 1, 1, 1))
         btn1.bind(on_press=self.btn1_click)
         btn1.bind(on_release=self.btn1_release)
+        btn2 = Button(text='单位换算', font_name='Chinese', background_color=(1, 1, 1, 1))
         btn2.bind(on_press=self.btn2_click)
         btn2.bind(on_release=self.btn2_release)
-        layout.add_widget(btn1)
-        layout.add_widget(btn2)
-        return layout
+        btn3 = Button(text='关于', font_name='Chinese', background_color=(1, 0.8, 0, 1))
+        btn3.bind(on_press=self.btn3_click)
+        btn3.bind(on_release=self.btn3_release)
+        button_layout.add_widget(btn1)
+        button_layout.add_widget(btn2)
+        button_layout.add_widget(btn3)
+        main_layout.add_widget(button_layout)
+        return main_layout
     def calculate(self, expression):
         try:
             lines = expression.strip().split("\n")
             namespace = {
                 'g': 10,
+                'c': 300000000,
+                'MACH': 340,
                 'pi': math.pi,
                 'sqrt': math.sqrt,
                 'cos': math.cos,
@@ -206,6 +214,16 @@ class MyApp(App):
         popup.open()
     def btn2_release(self, instance):
         instance.text = '单位换算'
+    def btn3_click(self, instance):
+        content = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        info_label = Label(
+            text='版本号：v0.3\n作者：tc0512\n作者邮箱：tancheng_0812@qq.com\n项目主页：https://github.com/tc0512/PhyCalc',
+            font_name='Chinese',
+            halign='center',
+            valign='middle'
+        )
+    def btn3_release(self, instance):
+        instance.text = '关于'
     def get_units_list(self, type_name):
         units = {
             '长度': ['米', '千米', '厘米', '毫米', '英尺', '英寸', '英里', '码'],
